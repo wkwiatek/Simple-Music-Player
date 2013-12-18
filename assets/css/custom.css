@@ -1,0 +1,30 @@
+body {
+  /*background-image: url('../img/ravenna.png');*/
+  background-image: url('../img/squairy_light.png');
+}
+.padded-top {
+	padding-top: 125px;
+}
+.box-rotate-clockwise {
+     -moz-transform: rotate(7.5deg);  /* FF3.5+ */
+       -o-transform: rotate(7.5deg);  /* Opera 10.5 */
+  -webkit-transform: rotate(7.5deg);  /* Saf3.1+, Chrome */
+             filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+         -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+}
+.box-rotate-clockcounterwise {
+     -moz-transform: rotate(-7.5deg);  /* FF3.5+ */
+       -o-transform: rotate(-7.5deg);  /* Opera 10.5 */
+  -webkit-transform: rotate(-7.5deg);  /* Saf3.1+, Chrome */
+             filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+         -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+}
+
+/*.hidden-top {
+	top:-1000px;
+	position: absolute;
+}*/
+
+.text-green {
+	color: #65a643;
+}

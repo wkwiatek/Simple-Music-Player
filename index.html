@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Build your favourite playlist in speed of light!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 10px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="assets/css/cerulean.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/custom.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="assets/ico/favicon.png">
+  </head>
+
+  <body>
+    
+    <header>
+      <div class="pagination-centered">
+        <h3>Simple music player</h3>
+      </div>
+    </header>    
+
+    <br>
+    <div class="container">
+      <div class="row-fluid">
+        <div class="span6 offset3">
+          <div class="accordion" id="accordion2">
+            <div class="accordion-group" style="background-color: white;">
+              <div class="accordion-heading">
+                <a class="accordion-toggle pagination-centered" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                  YouTube video player
+                </a>
+                <div id="collapseOne" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    <center>
+                      <iframe style="width: 100%;" id="ytplayer"class="youtube-player" type="text/html" width="530" height="389" src="https://www.youtube.com/v/ubi2z0ZQ0aA?version=3&f=videos&app=youtube_gdata&enablejsapi=1" allowfullscreen frameborder="0">
+                      </iframe>
+                    </center>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="container">
+      <div class="row-fluid">        
+        <div class="span2">          
+          <div class="padded-top box-rotate-clockwise">
+            <h1>Your playlist</h1>
+          </div>        
+        </div>
+        <div class="span8">
+          <div class="row-fluid">
+            <div class="span5">
+              <fieldset>
+                <label>Insert link from youtube</label>
+                <input id="input-videourl" class="span12" type="text" placeholder="Provide link…">                
+              </fieldset>
+              <button id="btn-add-link" class="btn btn-primary btn-block">Add to playlist</button>
+              <br>
+              <!-- ko if: myLibrary().length === 0-->
+              <div class="alert alert-info">
+                <span>Your playlist is empty at the moment.</span>
+              </div>
+              <!-- /ko -->
+              <!-- ko if: myLibrary().length > 0-->
+              <table class="table table-bordered">
+                <tbody style="background-color: white;" data-bind="foreach: myLibrary">                         
+                  <tr>
+                    <td><label data-bind="text: title, click: play"></label></td>
+                    <td>
+                      <div class="btn-group">
+                        <button data-bind="click: play" class="btn btn-small btn-success"><i class="icon-white icon-play"></i></button>
+                        <button data-bind="click: $parent.removeFromLibrary" class="btn btn-small btn-primary"><i class="icon-white icon-remove"></i></button>
+                      </div>
+                    </td>
+                  </tr>                                 
+                </tbody>    
+              </table>
+              <!-- /ko -->
+            </div>
+            <div class="span2">
+              <div class="pagination-centered">
+                <br>
+                <h1>or</h1>
+              </div>
+            </div>
+            <div class="span5">
+              <fieldset>
+                <label>Search youtube</label>
+                <input id="input-search" class="span12" type="text" placeholder="What you wanna listen to?">
+              </fieldset>
+              <button id="btn-search" class="btn btn-success btn-block">Search</button>
+              <br>
+              <!-- ko if: searchResults().length > 0-->
+              <table class="table table-bordered">
+                <tbody style="background-color: white;" data-bind="foreach: searchResults">                         
+                  <tr>
+                    <td><label data-bind="text: title, click: play"></label></td>
+                    <td>
+                      <div class="btn-group">
+                        <button data-bind="click: play" class="btn btn-small btn-success"><i class="icon-white icon-play"></i></button>
+                        <button data-bind="click: $parent.addToLibrary" class="btn btn-small btn-primary"><i class="icon-white icon-plus"></i></button>
+                      </div>
+                    </td>
+                  </tr>                                 
+                </tbody>    
+              </table>
+              <!-- /ko -->​
+            </div>
+          </div>
+        </div>
+        <div class="span2">
+          <div class="padded-top box-rotate-clockcounterwise">
+            <h1 class="text-green">Search results</h1>
+          </div>        
+        </div>
+      </div>      
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>    
+    <script src="assets/js/bootstrap-transition.js"></script>
+    <script src="assets/js/bootstrap-alert.js"></script>
+    <script src="assets/js/bootstrap-modal.js"></script>
+    <script src="assets/js/bootstrap-dropdown.js"></script>
+    <script src="assets/js/bootstrap-scrollspy.js"></script>
+    <script src="assets/js/bootstrap-tab.js"></script>
+    <script src="assets/js/bootstrap-tooltip.js"></script>
+    <script src="assets/js/bootstrap-popover.js"></script>
+    <script src="assets/js/bootstrap-button.js"></script>
+    <script src="assets/js/bootstrap-collapse.js"></script>
+    <script src="assets/js/bootstrap-carousel.js"></script>
+    <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootbox.min.js"></script>
+    <script src="assets/js/amplify.min.js"></script>
+    <script src="assets/js/knockout-2.2.1.js"></script>
+    
+    <script type="text/javascript">
+    $(function(){
+      $('#btn-search').click( function () {
+        var value = $('#input-search').val();
+        $.get('https://gdata.youtube.com/feeds/api/videos?q='+value+'&orderby=viewCount&start-index=11&max-results=10&v=2&alt=json',function(result) {            
+            model.searchResults.removeAll();
+            for (var i = 0, length = result.feed.entry.length; i < length; i++) {
+              var entry = result.feed.entry[i];
+              model.searchResults.push(new song(entry.title.$t, entry.content.src));
+            };            
+        });
+      });
+
+      $('#btn-add-link').click( function () {
+        var videoUrl = $('#input-videourl').val(),
+            videoId = youtubeParser(videoUrl);
+        if (videoId) {
+          $.get('https://gdata.youtube.com/feeds/api/videos/' + videoId + '?v=2&alt=json',function(result) { 
+            var entry = result.entry;
+            model.addToLibrary(new song(entry.title.$t, entry.content.src));
+            $('#input-videourl').val('');
+          });
+        }
+        else {
+          bootbox.alert('Url invalid!');
+        }
+      });      
+
+      function song(title, link) {
+        var self = this;
+                  
+        self.title = ko.observable(title);
+        self.link = ko.observable(link);
+        self.play = function() {          
+          $('#ytplayer').attr('src', self.link() + '&autoplay=1');          
+        }    
+      }
+
+      function viewModel(){
+        var self = this;
+        self.searchResults = ko.observableArray([]);        
+        self.myLibrary = ko.observableArray([]);     
+        self.addToLibrary = function(s) {
+          var songToAdd = new song(s.title(), s.link());
+          var match = ko.utils.arrayFirst(self.myLibrary(), function(item) {
+            return songToAdd.title() === item.title();
+          });
+          if (!match) {
+            self.myLibrary.push(songToAdd);          
+            console.log(ko.toJSON(self.myLibrary()))
+            localStorage.setItem("playlist", ko.toJSON(self.myLibrary()));
+          }
+        }
+        self.removeFromLibrary = function(s) {
+          bootbox.confirm("Are you sure?", function(result) {
+            if(result) self.myLibrary.remove(s)            
+            localStorage.setItem("playlist", ko.toJSON(self.myLibrary()));
+          });           
+        }
+      };
+      
+      var model = new viewModel();
+
+      var existingPlaylist = localStorage.getItem('playlist');
+
+      if (existingPlaylist){
+        JSON.parse(existingPlaylist).forEach( function(item){
+          model.myLibrary.push(new song(item.title, item.link));
+        });   
+      }
+         
+      ko.applyBindings(model);      
+      
+      function youtubeParser(url){
+        var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+        var match = url.match(regExp);
+        if (match&&match[7].length==11){
+          return match[7];
+        }else{
+          return false;
+        }
+      }    
+    });    
+    </script>
+  </body>
+</html>
